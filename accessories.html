@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accessories • LiftVITAL</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet"/>
+
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="accessories.css" />
+</head>
+<body>
+
+  <!-- Brand + Nav -->
+  <header>
+    <div class="brand-header">
+      <h1>LiftVITAL</h1>
+    </div>
+
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="accessories.html" class="active">Accessories</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Search -->
+  <div class="search-bar" role="search">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search accessories..."
+      aria-label="Search accessories"
+      autocomplete="off"
+    />
+  </div>
+
+  <!-- Grid -->
+  <main>
+    <div class="accessories-grid" id="accessoriesGrid">
+
+      <!-- Example Card (Repeat for each product) -->
+      <div class="accessory-card" onclick="openProductModal('lifting-straps')">
+        <img src="images/lifting-straps.jpg" alt="Lifting Straps" />
+        <h3>Lifting Straps</h3>
+        <p>Durable straps for heavy deadlifts and rows.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+      <div class="accessory-card" onclick="openProductModal('resistance-bands')">
+        <img src="images/resistance-bands.jpg" alt="Resistance Bands" />
+        <h3>Resistance Bands</h3>
+        <p>Perfect for warm-ups, mobility, and home workouts.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+      <div class="accessory-card" onclick="openProductModal('knee-sleeves')">
+        <img src="images/knee-sleeves.jpg" alt="Compression Knee Sleeves" />
+        <h3>Compression Knee Sleeves</h3>
+        <p>Pain relief & comfort for your workouts.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+      <div class="accessory-card" onclick="openProductModal('barpad')">
+        <img src="images/barpad.jpeg" alt="bar pad" />
+        <h3>Barpad</h3>
+        <p>Cushioned support for comfort and safety during squats and hip thrusts.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+      <div class="accessory-card" onclick="openProductModal('Waterbottle')">
+        <img src="images/Waterbottle.jpg" alt="Waterbottle" />
+        <h3>2L Waterbottle</h3>
+        <p>Lightweight, leak-proof, and built for everyday hydration.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+      <div class="accessory-card" onclick="openProductModal('headbands')">
+        <img src="images/headbands.png" alt="Head bands" />
+        <h3>Performance Headbands</h3>
+        <p>Lightweight, sweat-wicking, and secure for all-day comfort.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+      <div class="accessory-card" onclick="openProductModal('Jumprope')">
+        <img src="images/Jumprope.jpg" alt="Jumprope" />
+        <h3>Adjustable Jump Rope</h3>
+        <p>Great for speed, cardio and endurance training.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+      <div class="accessory-card" onclick="openProductModal('BFR-Bands')">
+        <img src="images/bfrnormal.jpg" alt="Blood Flow Restrictions Bands" />
+        <h3>Blood Flow Restrictions Bands</h3>
+        <p>Boost muscle growth with safe, adjustable BFR bands.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+      <div class="accessory-card" onclick="openProductModal('Duffel-Bag')">
+        <img src="images/BLACLDUFFLE.webp" alt="Duffel Bag" />
+        <h3>Duffel Bag</h3>
+        <p>Spacious, durable, and versatile for gym or travel.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+      <div class="accessory-card" onclick="openProductModal('Lifting-Belt')">
+        <img src="images/Lifting belt.jpg" alt="Lifting Belt" />
+        <h3>Lifting Belt</h3>
+        <p>Supports your core with durable, secure comfort for heavy lifts.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+       <div class="accessory-card" onclick="openProductModal('Vest')">
+        <img src="images/vest.webp" alt="Vest" />
+        <h3>Outdoor Sportsvest</h3>
+        <p>Lightweight, breathable, and built for comfort in any activity.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+       <div class="accessory-card" onclick="openProductModal('Hipbands')">
+        <img src="images/Hipbands.jpg" alt="Hipbands" />
+        <h3>Hipbands</h3>
+        <p>Durable, non-slip, and perfect for strength and mobility training.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+       <div class="accessory-card" onclick="openProductModal('Vest')">
+        <img src="images/Gloves.jpg" alt="Gloves" />
+        <h3>Gloves</h3>
+        <p>Breathable, durable, and designed for maximum grip and comfort.</p>
+        <button onclick="event.stopPropagation();window.open('https://instagram.com/liftvital','_blank')">Visit IG</button>
+      </div>
+
+
+      <!-- Add the rest of your products here with same structure -->
+
+    </div>
+
+    <!-- Empty state -->
+    <p id="noResults" style="display:none; text-align:center; color:#ccc; padding:1rem;">
+      No accessories match your search.
+    </p>
+  </main>
+
+  <footer style="text-align:center; padding:1rem; color:#aaa;">
+    &copy; 2025 Banji Fitness
+  </footer>
+
+  <!-- Product Modal -->
+  <div id="productModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close" onclick="closeProductModal()">&times;</span>
+      <img id="modalImage" src="" alt="" />
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <p><strong>Price:</strong> <span id="modalPrice"></span></p>
+      <p><strong>Colors:</strong> <span id="modalColors"></span></p>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    const products = {
+      "lifting-straps": {
+        title: "Lifting Straps",
+        description: "Durable straps for heavy deadlifts and rows.",
+        price: "₦8,500",
+        colors: "Black, Purple, Pink, Blue, Red",
+        image: "images/lifting-straps.jpg"
+      },
+      "resistance-bands": {
+        title: "Resistance Bands",
+        description: "Perfect for warm-ups, mobility, and home workouts.",
+        price: "₦",
+        colors: "Green, Blue, Purple, Yellow, Red",
+        image: "images/resistance-bands.jpg"
+      },
+      "knee-sleeves": {
+        title: "Compression Knee Sleeves",
+        description: "Pain relief & comfort for your workouts.",
+        price: "₦7000",
+        colors: "Black, Grey",
+        image: "images/knee-sleeves.jpg"
+      },
+       "headbands": {
+        title: "Performance Headbands",
+        description: "Lightweight, sweat-wicking, and secure for all-day comfort.",
+        price: "₦2,500",
+        colors: "multicolor",
+        image: "images/headbands.png"
+      },
+      "Waterbottle": {
+        title: "2L Waterbottle",
+        description: "Lightweight, leak-proof, and built for everyday hydration.",
+        price: "₦9000",
+        colors: "Black, Purple, Pink, Blue, Red, Purple, Green",
+        image: "images/Waterbottle.jpg"
+      },
+      "barpad": {
+        title: "Barpad",
+        description: "Cushioned support for comfort and safety during squats and hip thrusts.",
+        price: "₦15,000",
+        colors: "Black, Purple, Pink, Blue, Red",
+        image: "images/barpad.jpeg"
+      },
+      "Jumprope": {
+        title: "Adjustable Jump Rope",
+        description: "Great for speed, cardio and endurance training.",
+        price: "₦9,500",
+        colors: "Black, Multicolor",
+        image: "images/Jumprope.jpg"
+      },
+      "BFR-Bands": {
+        title: "Blood Flow Restrictions Bands",
+        description: "Boost muscle growth with safe, adjustable BFR bands.",
+        price: "₦19,000",
+        colors: "Multicolor",
+        image: "images/bfrnormal.jpg"
+      },
+      "Duffel-Bag": {
+        title: "Duffel Bag",
+        description: "Spacious, durable, and versatile for gym or travel",
+        price: "₦25,000",
+        colors: "Black, Pink",
+        image: "images/BLACLDUFFLE.webp"
+      },
+      "Lifting-Belt": {
+        title: "Lifting Belt",
+        description: "Supports your core with durable, secure comfort for heavy lifts.",
+        price: "₦29,000",
+        colors: "Black, Pink",
+        image: "images/Lifting belt.jpg"
+      },
+       "Vest": {
+        title: "Outdoor Sportsvest",
+        description: "Lightweight, breathable, and built for comfort in any activity.",
+        price: "₦20,000",
+        colors: "Multicolor",
+        image: "images/vest.webp"
+      },
+        "Gloves": {
+        title: "Gloves",
+        description: "Breathable, durable, and designed for maximum grip and comfort.",
+        price: "₦9,000",
+        colors: "Purple, Black, Pink, Blue, Red",
+        image: "images/Gloves.jpg"
+      },
+       "Hipbands": {
+        title: "Hipbands",
+        description: "Durable, non-slip, and perfect for strength and mobility training.",
+        price: "Light-₦8,000 Medium- ₦8,500 Heavy- ₦9,000",
+        colors: "Purple, Black, Cyan, Pink, Blue, Grey",
+        image: "images/Hipbands.jpg"
+      },
+      // Add other products here
+    };
+
+    function openProductModal(id) {
+      const product = products[id];
+      if (!product) return;
+      document.getElementById('modalImage').src = product.image;
+      document.getElementById('modalTitle').textContent = product.title;
+      document.getElementById('modalDescription').textContent = product.description;
+      document.getElementById('modalPrice').textContent = product.price;
+      document.getElementById('modalColors').textContent = product.colors;
+      document.getElementById('productModal').style.display = 'block';
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').style.display = 'none';
+    }
+
+    // Close modal on outside click
+    window.onclick = function(e) {
+      const modal = document.getElementById('productModal');
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    };
+
+    // Search Filter
+    const searchInput = document.getElementById('searchInput');
+    const grid = document.getElementById('accessoriesGrid');
+    const noResults = document.getElementById('noResults');
+
+    function applySearchFilter() {
+      const q = searchInput.value.trim().toLowerCase();
+      const cards = grid.querySelectorAll('.accessory-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+        const desc  = card.querySelector('p')?.textContent.toLowerCase() || '';
+        const match = title.includes(q) || desc.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) visibleCount++;
+      });
+
+      noResults.style.display = visibleCount === 0 ? '' : 'none';
+    }
+
+    searchInput.addEventListener('input', applySearchFilter);
+
+    // Alphabetical sort
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = Array.from(grid.querySelectorAll('.accessory-card'));
+      cards.sort((a, b) => {
+        const nameA = (a.querySelector('h3')?.textContent || '').toLowerCase().trim();
+        const nameB = (b.querySelector('h3')?.textContent || '').toLowerCase().trim();
+        return nameA.localeCompare(nameB);
+      });
+      cards.forEach(card => grid.appendChild(card));
+    });
+  </script>
+</body>
+</html>

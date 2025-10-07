@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Built by Banji</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Cormorant+Garamond:wght@600&family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="nav-logo">BuiltBy<span>Banji</span></div>
+      <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#trial">Free Trial</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Transform Your Body, Build Your Confidence</h1>
+      <p>1:1 coaching, personalized training, and premium fitness gear.</p>
+      <a href="#contact" class="btn">Get Started</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+<section class="about-section">
+  <div class="about-overlay">
+    <div class="about-content">
+      <h2></h2>
+ 
+    </div>
+  </div>
+</section>
+<section id="how-it-works" class="how-it-works">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Complete the Form</h3>
+        <p>Fill out the quick survey so I can understand your goals, experience, and body type.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Wait to Be Contacted</h3>
+        <p>Once you submit, I’ll review your info and reach out if you’re a good fit for the program.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>You’re All Set</h3>
+        <p>If approved, you’ll receive your plan access and we’ll begin your transformation journey.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-wrapper">
+    <a href="coaching-survey.html" class="cta-btn">Start Now</a>
+  </div>
+</section>
+
+
+  <!-- Workout Log CTA Section -->
+  <section class="feature-card">
+  <h3>Workout Log</h3>
+  <p>Keep track of your sets, reps and progress — quick and simple logging.</p>
+  <a href="workout-log.html" class="card-link" id="ctaWorkoutLink">Log Your Workout →</a>
+</section>
+
+  <section id="services" class="section">
+    <div class="container">
+      <div class="plan-card">
+        <h3>3-Day Free Trial Plan Plan</h3>
+         <p>Test out my coaching with a free <strong>3-Day</strong> plan.</p>
+         <a href="trial.html" class="card-link">Try now</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="service-grid">
+        <a href="coaching-survey.html">
+      <div class="service">
+        <img src="images/coaching.jpg" alt="1:1 Coaching">
+        <h3>1:1 Online Coaching</h3>
+        <p>Personalized fitness coaching to achieve your goals faster.</p>
+      </div>
+      </a>
+
+      <div class="service">
+        <a href="accessories.html">
+          <img src="images/accessories.jpg" alt="Fitness Accessories">
+          <h3>Fitness Accessories</h3>
+          <p>Quality gear to help you perform at your best.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <form action="https://formspree.io/f/xzzjazvv" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required id="name"/>
+      <input type="email" name="email" placeholder="Your Email" required id="name" />
+      <textarea name="message" placeholder="Your Message" required id="name"></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <div class="social-links">
+      <a href="https://instagram.com/_banji.o" target="_blank">Instagram</a>
+      <a href="https://tiktok.com/@banji.o" target="_blank">TikTok</a>
+      <a href="mailto:alabiolabanji9@gmail.com">Email</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Built by Banji. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+  </script>
+  <script>
+  // Add a safe click handler so links navigate even if some other script calls preventDefault
+  ['#navWorkoutLink', '#ctaWorkoutLink'].forEach(selector => {
+    const el = document.querySelector(selector);
+    if (!el) return;
+    el.addEventListener('click', function(e) {
+      // If user intentionally wants to open in new tab (ctrl/cmd/shift/middle-click), don't override
+      if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return;
+
+      const href = this.getAttribute('href') || 'workout-log.html';
+      e.preventDefault();            // prevent any other handler from stopping navigation
+      location.assign(href);         // navigate
+    });
+  });
+
+  // Optional dev check: warns in console if the file can't be found (only works when served over HTTP)
+  (async function checkWorkoutPage() {
+    try {
+      const resp = await fetch('workout-log.html', { method: 'HEAD' });
+      if (!resp.ok) {
+        console.warn('workout-log.html was requested but returned status', resp.status,
+          '. Verify the file exists and the path is correct (case-sensitive).');
+      } else {
+        console.log('workout-log.html found (OK).');
+      }
+    } catch (err) {
+      // fetch will fail on file:// so this is expected if you open files locally
+      console.warn('Could not verify workout-log.html via fetch (this is expected on file://). If link still fails, check the filename/path.');
+    }
+  })();
+  const form = document.querySelector("form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      alert("Thank you! Your message has been sent successfully.");
+      form.reset();
+    } else {
+      alert("Oops! Something went wrong. Please try again.");
+    }
+  });
+</script>
+
+</body>
+</html>

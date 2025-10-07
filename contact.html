@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply for Coaching | BuiltByBanji</title>
+  <link rel="stylesheet" href="survey.css" />
+</head>
+<body>
+  <div class="survey-wrapper">
+    <h2>Complete Your Coaching Application</h2>
+    <p>We’ll use your answers to craft a plan that fits you perfectly.</p>
+
+    <form id="contactForm" action="https://formspree.io/f/xzzjazvv" method="POST">
+      <label>Name</label>
+      <input type="text" name="name" required>
+
+      <label>Email</label>
+      <input type="email" name="email" required>
+
+      <label>Any additional notes?</label>
+      <textarea name="message" rows="4" placeholder="Tell me about your current routine or any concerns..."></textarea>
+
+      <!-- Hidden survey data field -->
+      <input type="hidden" name="surveyResults" id="surveyResults">
+
+      <button type="submit" class="cta-btn">Submit Application →</button>
+    </form>
+  </div>
+
+  <script>
+    // Load survey results from localStorage
+    const stored = localStorage.getItem("surveyData");
+    if (stored) {
+      const data = JSON.parse(stored);
+      let formatted = Object.entries(data)
+        .map(([q, a]) => `${q}: ${a}`)
+        .join("\n");
+      document.getElementById("surveyResults").value = formatted;
+    }
+
+    // Optionally clear data after submission
+    document.getElementById("contactForm").addEventListener("submit", () => {
+      localStorage.removeItem("surveyData");
+    });
+  </script>
+</body>
+</html>

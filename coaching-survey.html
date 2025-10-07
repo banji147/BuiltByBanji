@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coaching Survey | BuiltByBanji</title>
+  <link rel="stylesheet" href="survey.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-logo">BuiltBy<span>Banji</span></div>
+  </nav>
+
+  <div class="survey-wrapper">
+    <div class="survey-card">
+      <div id="progress-bar"></div>
+
+      <div id="question-box" class="fade-in">
+        <h2 id="question">What’s your gender?</h2>
+        <div id="options"></div>
+      </div>
+
+      <div class="bottom-nav">
+        <button id="nextBtn" disabled>Next →</button>
+      </div>
+    </div>
+  </div>
+  <a href="index.html" class="back-home-btn">← Back to Home</a>
+
+  <script>
+    const questions = [
+      { q: "What’s your gender?", options: ["Male", "Female", "Other"] },
+      { q: "What’s your body type?", options: ["Ectomorph", "Mesomorph", "Endomorph"] },
+      { q: "What’s your main fitness goal?", options: ["Build muscle", "Lose fat", "Recomp", "Stay fit"] },
+      { q: "How many days a week can you train?", options: ["3", "4", "5", "6+"] },
+      { q: "Any injuries or limitations?", options: ["None", "Lower back", "Knees", "Shoulders", "Other"] },
+    ];
+
+    let currentIndex = 0;
+    const questionBox = document.getElementById("question");
+    const optionsBox = document.getElementById("options");
+    const nextBtn = document.getElementById("nextBtn");
+    const progressBar = document.getElementById("progress-bar");
+
+    let answers = {};
+
+    function loadQuestion() {
+      const q = questions[currentIndex];
+      questionBox.textContent = q.q;
+      optionsBox.innerHTML = "";
+
+      q.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+        btn.classList.add("option-btn");
+        btn.onclick = (e) => selectOption(e, opt);
+        optionsBox.appendChild(btn);
+      });
+
+      nextBtn.disabled = true;
+      animateIn();
+      updateProgress();
+    }
+
+    function selectOption(e, opt) {
+      answers[questions[currentIndex].q] = opt;
+      document.querySelectorAll(".option-btn").forEach(btn => btn.classList.remove("selected"));
+      e.target.classList.add("selected");
+      nextBtn.disabled = false;
+    }
+
+    nextBtn.onclick = () => {
+      if (currentIndex < questions.length - 1) {
+        animateOut(() => {
+          currentIndex++;
+          loadQuestion();
+        });
+      } else {
+        showSummary();
+      }
+    };
+
+    function showSummary() {
+      animateOut(() => {
+        questionBox.textContent = "✅ Thank you!";
+        optionsBox.innerHTML = `
+          <p>Your responses have been recorded.</p>
+          <p>We’ll use this info to tailor your custom plan.</p>
+          <a href="contact.html" class="cta-btn">Proceed to Contact →</a>
+        `;
+        nextBtn.style.display = "none";
+        progressBar.style.width = "100%";
+      });
+    }
+
+    function animateOut(callback) {
+      const box = document.getElementById("question-box");
+      box.classList.remove("fade-in");
+      box.classList.add("fade-out");
+      setTimeout(() => {
+        callback();
+        box.classList.remove("fade-out");
+        box.classList.add("fade-in");
+      }, 300);
+    }
+
+    function animateIn() {
+      const box = document.getElementById("question-box");
+      box.classList.add("fade-in");
+    }
+
+    function updateProgress() {
+      const percent = ((currentIndex) / questions.length) * 100;
+      progressBar.style.width = `${percent}%`;
+    }
+
+    loadQuestion();
+    function showSummary() {
+  animateOut(() => {
+    // Store answers in localStorage before redirect
+    localStorage.setItem("surveyData", JSON.stringify(answers));
+
+    // Redirect to contact form page
+    window.location.href = "contact.html";
+  });
+}
+  </script>
+</body>
+</html>

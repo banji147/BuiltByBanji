@@ -1,0 +1,444 @@
+/* workout-log.css
+   Full page styles for Workout Log (BuiltByBanji)
+   Red & black theme, card flip UI, improved form inputs
+*/
+
+/* ========== Variables ========== */
+:root{
+  --bg: #0d0d0d;
+  --panel: #121212;
+  --card: #161616;
+  --muted: #cfcfcf;
+  --text: #ffffff;
+  --accent: #ff4f5e;    /* site red */
+  --accent-dark: #ff2b2b;
+  --border: #222;
+  --glow: rgba(255,79,94,0.15);
+  --shadow: 0 8px 24px rgba(0,0,0,0.6);
+  --radius: 12px;
+}
+
+/* ========== Base ========== */
+*{ box-sizing: border-box; }
+html,body{
+  height:100%;
+  margin:0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* ========== Navbar (matches index style) ========== */
+.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: #000;
+  border-bottom: 1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 0.9rem 1.25rem;
+}
+.logo { font-weight:700; color:#fff; font-size:1.1rem; }
+.nav-links { list-style:none; display:flex; gap:14px; margin:0; padding:0; }
+.nav-links a { color:#fff; text-decoration:none; padding:6px 8px; border-radius:6px; }
+.nav-links a:hover { color:var(--accent); background: rgba(255,79,94,0.04); }
+
+/* mobile hamburger placeholder */
+.hamburger{ display:none; cursor:pointer; color:#fff; }
+@media (max-width:768px){ .hamburger{ display:block; } .nav-links{ display:none; } }
+
+/* ========== Page wrapper ========== */
+.workout-log {
+  padding: 28px 18px;
+  max-width:1100px;
+  margin: 0 auto;
+}
+
+/* Title */
+.workout-log h2 {
+  color: var(--accent);
+  font-size: 2rem;
+  margin: 6px 0 20px;
+  letter-spacing: 0.2px;
+}
+
+/* ========== Category selector ========== */
+.exercise-category {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+  margin-bottom: 22px;
+  flex-wrap:wrap;
+}
+.exercise-category label{ font-weight:600; color:var(--muted); }
+.exercise-category select{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 10px;
+  min-width: 220px;
+  font-size: 1rem;
+  transition: box-shadow .18s, border-color .18s;
+}
+.exercise-category select:focus{
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px var(--glow);
+}
+
+/* ========== Exercise Grid ========== */
+.exercise-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* ========== Exercise Card (flip) ========== */
+.exercise-card {
+  position: relative;
+  height: 260px;
+  perspective: 1200px;
+}
+
+/* Both faces share base style */
+.exercise-front,
+.exercise-back {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, #0f0f0f 0%, var(--card) 100%);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(.2,.9,.2,1), box-shadow .25s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* front visible initially */
+.exercise-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+/* back is hidden behind */
+.exercise-back {
+  transform: rotateY(-180deg);
+  z-index: 1;
+}
+
+/* flipped state — toggle by JS adding .flipped to .exercise-card */
+.exercise-card.flipped .exercise-front {
+  transform: rotateY(180deg);
+}
+.exercise-card.flipped .exercise-back {
+  transform: rotateY(0deg);
+  z-index: 3;
+}
+
+/* Front content */
+.exercise-front i { width:44px; height:44px; stroke:var(--accent); margin-bottom:6px; }
+.exercise-front h3 { margin:0; color:var(--accent); font-size:1.12rem; text-shadow:0 2px 14px rgba(255,79,94,0.06); }
+.exercise-front p { margin:0; color:var(--muted); font-size:0.95rem; text-align:center; padding:0 6px; }
+
+/* Back inputs */
+.exercise-back input,
+.exercise-back .date-input{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid #2a2a2a;
+  background:#0b0b0b;
+  color:var(--text);
+  font-size:0.95rem;
+  transition: box-shadow .16s, border-color .16s;
+}
+.exercise-back input:focus,
+.exercise-back .date-input:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 6px 18px var(--glow);
+}
+
+/* Save button */
+.save-btn {
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-dark) 100%);
+  color:#fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 8px 24px rgba(255,79,94,0.12);
+  transition: transform .12s ease, box-shadow .18s;
+}
+.save-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(255,79,94,0.18); }
+
+/* Make sure clicking inputs doesn't flip card (JS stops propagation) */
+
+/* ========== Progress section ========== */
+.progress-section { text-align:center; margin-top:36px; margin-bottom:24px; }
+.progress-ring { position:relative; width:150px; height:150px; margin: 8px auto 0; }
+.progress-ring svg { display:block; width:100%; height:100%; transform: rotate(-90deg); }
+.progress-bg { stroke: #222; stroke-width:12; fill: none; }
+.progress-bar { stroke: var(--accent); stroke-width:12; stroke-linecap:round; fill:none; transition: stroke-dashoffset .6s ease; }
+.progress-text { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-weight:800; color:#fff; font-size:1.2rem; }
+
+/* ========== Log form ========== */
+.log-section {
+  margin-top: 28px;
+  background: transparent;
+  padding: 18px;
+  border-radius: 12px;
+}
+
+/* The form controls */
+#workoutForm {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+}
+#workoutForm select,
+#workoutForm input[type="number"] {
+  background: #0b0b0b;
+  border: 1px solid #222;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #fff;
+  min-width: 160px;
+}
+#workoutForm button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight:700;
+  cursor:pointer;
+}
+#workoutForm button:hover { background: var(--accent-dark); transform: translateY(-2px); }
+
+/* Workout history list */
+#workoutHistory {
+  margin-top: 16px;
+  list-style: none;
+  padding: 0;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#workoutHistory li {
+  background: #101010;
+  border: 1px solid #1a1a1a;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* ========== Responsive tweaks ========== */
+@media (max-width: 900px){
+  .exercise-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .exercise-card { height: 240px; }
+}
+
+@media (max-width: 560px){
+  .workout-log { padding: 18px 12px; }
+  #workoutForm { flex-direction: column; gap:10px; }
+  .exercise-card { height: 220px; }
+}
+
+/* ========== Small helpers ========== */
+.center { text-align:center; }
+.small { font-size:0.9rem; color:var(--muted); }
+
+/* ========== Debugging / dev helper =======
+If you still don't see the styles:
+ - ensure HTML <link rel="stylesheet" href="workout-log.css"> is correct
+ - open DevTools -> Network -> confirm workout-log.css loaded (200)
+ - check for other styles overriding (use inspector to see rule origin)
+=========================================== */
+/* Workout History */
+#workoutHistory {
+  list-style: none;
+  margin: 2rem 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+#workoutHistory li {
+  background: #1a1a1a;
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+#workoutHistory li:hover {
+  transform: translateY(-3px);
+  background: #222;
+}
+
+#workoutHistory li span {
+  font-weight: 600;
+  color: #ff4f5e;
+}
+/* Delete Button */
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.delete-btn:hover {
+  color: #ff4f5e;
+}
+/* Workout history list */
+#workoutHistory {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each history item */
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: #0f0f0f;
+  border: 1px solid #161616;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin: 8px 0;
+  color: #ddd;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+/* Left content */
+.history-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.98rem;
+}
+
+/* Date smaller text */
+.history-date {
+  font-size: 0.82rem;
+  color: #999;
+}
+
+/* Delete Button */
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.15s ease, transform 0.08s;
+}
+
+.delete-btn:hover {
+  color: #ff4f5e;
+  background: rgba(255,79,94,0.06);
+}
+
+.delete-btn:active {
+  transform: scale(.96);
+}
+
+/* Fade-out animation class (applied before removal) */
+.fade-out {
+  opacity: 0;
+  transform: translateX(8px);
+  pointer-events: none;
+}
+/* =========================
+   Streak Tracker
+========================= */
+.streak-section {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.streak-section h2 {
+  color: #ff4f5e;
+  margin-bottom: 1rem;
+}
+
+.streak-box {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  background: #1a1a1a;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.streak-box div h3 {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0;
+}
+
+.streak-box div p {
+  color: #aaa;
+  margin: 0.3rem 0 0;
+  font-size: 0.9rem;
+}
+/* =========================
+   Share Section
+========================= */
+.share-section {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.share-section h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.share-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.share-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.share-btn:hover svg {
+  transform: scale(1.2);
+}

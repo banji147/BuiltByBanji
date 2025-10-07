@@ -1,0 +1,73 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Background Image */
+.background {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('images/Shot.jpg') no-repeat center center/cover;
+  filter: blur(8px) brightness(0.4);
+  z-index: -1;
+}
+
+/* Main Container */
+.trial-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Titles */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #f5f5f5; /* yellow accent */
+}
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #d1d5db;
+}
+
+/* Program */
+.program {
+  text-align: left;
+}
+.program h2 {
+  margin-top: 20px;
+  color: #f87171; /* red accent */
+}
+.program ul {
+  margin: 10px 0 20px 20px;
+}
+.program li {
+  margin: 5px 0;
+}
+
+/* Button */
+.download-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 25px;
+  background: #f87171;
+  color: #000;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.download-btn:hover {
+  background: #f87171;
+  transform: scale(1.05);
+}
